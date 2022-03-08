@@ -1733,13 +1733,6 @@ module.exports = isCallable(WeakMap) && /native code/.test(inspectSource(WeakMap
 
 /***/ }),
 
-/***/ "7fb8":
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
 /***/ "825a":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1917,36 +1910,24 @@ var es_promise_finally = __webpack_require__("a79d");
 // EXTERNAL MODULE: external "vue"
 var external_vue_ = __webpack_require__("8bbf");
 
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader-v16/dist??ref--1-1!./src/App.vue?vue&type=template&id=2ed6ffae
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_HelloWorld = Object(external_vue_["resolveComponent"])("HelloWorld");
+
+  return Object(external_vue_["openBlock"])(), Object(external_vue_["createBlock"])(_component_HelloWorld);
+}
+// CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=2ed6ffae
+
 // EXTERNAL MODULE: external "vue/server-renderer"
 var server_renderer_ = __webpack_require__("f488");
 
-// EXTERNAL MODULE: ./src/assets/logo.png
-var logo = __webpack_require__("cf05");
-var logo_default = /*#__PURE__*/__webpack_require__.n(logo);
-
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader-v16/dist??ref--1-1!./src/App.vue?vue&type=template&id=1de185ca
-
-
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader-v16/dist??ref--1-1!./src/components/HelloWorld.vue?vue&type=template&id=81e0d0fa
 
 function ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  var _component_HelloWorld = Object(external_vue_["resolveComponent"])("HelloWorld");
-
-  _push("<!--[--><img alt=\"Vue logo\"".concat(Object(server_renderer_["ssrRenderAttr"])("src", logo_default.a), ">"));
-
-  _push(Object(server_renderer_["ssrRenderComponent"])(_component_HelloWorld, {
-    msg: "Welcome to Your Vue.js App"
-  }, null, _parent));
-
-  _push("<!--]-->");
+  _push("<div".concat(Object(server_renderer_["ssrRenderAttrs"])(_attrs), "> template ssss11SSR-Vue3 <button class=\"bg-green-900 text-pink-600\">click on mssse</button><button class=\"bg-green-900 text-pink-600\">click on mssse</button><button class=\"bg-green-900 text-pink-600\">click on mssse</button></div>"));
 }
-// CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=1de185ca
-
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader-v16/dist??ref--1-1!./src/components/HelloWorld.vue?vue&type=template&id=6a1dba7c
-
-function HelloWorldvue_type_template_id_6a1dba7c_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  _push("<div".concat(Object(server_renderer_["ssrRenderAttrs"])(_attrs), ">template SSR-Vue3</div>"));
-}
-// CONCATENATED MODULE: ./src/components/HelloWorld.vue?vue&type=template&id=6a1dba7c
+// CONCATENATED MODULE: ./src/components/HelloWorld.vue?vue&type=template&id=81e0d0fa
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader-v16/dist??ref--1-1!./src/components/HelloWorld.vue?vue&type=script&lang=js
 /* harmony default export */ var HelloWorldvue_type_script_lang_js = ({
@@ -1967,7 +1948,7 @@ var exportHelper_default = /*#__PURE__*/__webpack_require__.n(exportHelper);
 
 
 
-const __exports__ = /*#__PURE__*/exportHelper_default()(HelloWorldvue_type_script_lang_js, [['ssrRender',HelloWorldvue_type_template_id_6a1dba7c_ssrRender]])
+const __exports__ = /*#__PURE__*/exportHelper_default()(HelloWorldvue_type_script_lang_js, [['ssrRender',ssrRender]])
 
 /* harmony default export */ var HelloWorld = (__exports__);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader-v16/dist??ref--1-1!./src/App.vue?vue&type=script&lang=js
@@ -1980,21 +1961,20 @@ const __exports__ = /*#__PURE__*/exportHelper_default()(HelloWorldvue_type_scrip
 });
 // CONCATENATED MODULE: ./src/App.vue?vue&type=script&lang=js
  
-// EXTERNAL MODULE: ./src/App.vue?vue&type=style&index=0&id=1de185ca&lang=css
-var Appvue_type_style_index_0_id_1de185ca_lang_css = __webpack_require__("f248");
-
 // CONCATENATED MODULE: ./src/App.vue
 
 
 
 
 
-
-
-const App_exports_ = /*#__PURE__*/exportHelper_default()(Appvue_type_script_lang_js, [['ssrRender',ssrRender]])
+const App_exports_ = /*#__PURE__*/exportHelper_default()(Appvue_type_script_lang_js, [['render',render]])
 
 /* harmony default export */ var App = (App_exports_);
+// EXTERNAL MODULE: ./src/assets/tailwind.css
+var tailwind = __webpack_require__("ba8c");
+
 // CONCATENATED MODULE: ./src/main.server.js
+
 
 
 
@@ -2352,6 +2332,13 @@ module.exports = function (name) {
 
 /***/ }),
 
+/***/ "ba8c":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "c04e":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2531,13 +2518,6 @@ module.exports = function (key, value) {
   } return value;
 };
 
-
-/***/ }),
-
-/***/ "cf05":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "img/logo.82b9c7a5.png";
 
 /***/ }),
 
@@ -3391,17 +3371,6 @@ module.exports.f = function (C) {
 
 /***/ }),
 
-/***/ "f248":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_7_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_7_oneOf_1_1_node_modules_vue_loader_v16_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_v16_dist_index_js_ref_1_1_App_vue_vue_type_style_index_0_id_1de185ca_lang_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("7fb8");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_7_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_7_oneOf_1_1_node_modules_vue_loader_v16_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_v16_dist_index_js_ref_1_1_App_vue_vue_type_style_index_0_id_1de185ca_lang_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_7_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_7_oneOf_1_1_node_modules_vue_loader_v16_dist_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_1_0_node_modules_vue_loader_v16_dist_index_js_ref_1_1_App_vue_vue_type_style_index_0_id_1de185ca_lang_css__WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
-
-
-/***/ }),
-
 /***/ "f36a":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3509,4 +3478,4 @@ module.exports = global.Promise;
 /***/ })
 
 /******/ });
-//# sourceMappingURL=app.2604be69.js.map
+//# sourceMappingURL=app.c4d2e17d.js.map
