@@ -4,7 +4,7 @@
 			<h4>Create blogs</h4>
 			<input placeholder="Название blogs" v-model="form.title" />
 
-			<input placeholder="Описание рецепта" v-model="form.description" />
+			<input placeholder="Описание рецепта" v-model="form.body" />
 			<p>{{ formError }}</p>
 			<button type="submit">create blogs</button>
 		</form>
@@ -22,23 +22,23 @@ export default {
 
 		const form = reactive({
 			title: '',
-			description: '',
+			body: '',
 		})
 
 		const formError = ref('')
 
 		const submit = () => {
-			if (form.title.trim().length > 3 && form.description.trim().length > 3) {
+			if (form.title.trim().length > 3 && form.body.trim().length > 3) {
 				const item = {
 					title: form.title.trim(),
-					description: form.description.trim(),
+					body: form.body.trim(),
 					id: uniqid(),
 				}
 
 				addItem(item)
 				formError.value = ''
 				form.title = ''
-				form.description = ''
+				form.body = ''
 			} else {
 				formError.value = 'Блог не может быть пустым или меньше 3 символов'
 			}

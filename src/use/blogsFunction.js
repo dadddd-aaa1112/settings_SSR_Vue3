@@ -1,12 +1,11 @@
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import axios from 'axios'
 
-const blogs = ref([])
 const BASE_URL = `https://jsonplaceholder.typicode.com/posts`
 
+const blogs = ref([])
+const idItem = ref([])
 export function useBlogsFunction() {
-	const currentValue = ref(null)
-
 	const fetchAllBlogs = async () => {
 		try {
 			const response = await axios.get(BASE_URL)
@@ -15,7 +14,29 @@ export function useBlogsFunction() {
 			console.log(error)
 		}
 	}
-	onMounted(fetchAllBlogs)
+
+	const fetchIdBlogs = async (id) => {
+		try {
+			const response = await axios.get(BASE_URL + `/${id}`)
+			idItem.value = response.data
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
+	const saveIdBlogs = async (id, item) => {
+		try {
+			const response = await axios.put(BASE_URL + `/${id}`, {
+				item,
+			})
+			blogs.value = response.data
+
+			console.log('success update')
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
 	const removeItem = async (id) => {
 		try {
 			await axios.delete(BASE_URL + `/${id}`)
@@ -38,16 +59,13 @@ export function useBlogsFunction() {
 		}
 	}
 
-	const selectItem = (id) => {
-		currentValue.value = blogs.value.find((blog) => blog.id === id)
-	}
-
 	return {
 		blogs,
-		currentValue,
+		idItem,
+		fetchIdBlogs,
 		fetchAllBlogs,
 		removeItem,
 		addItem,
-		selectItem,
+		saveIdBlogs,
 	}
 }

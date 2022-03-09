@@ -13,20 +13,18 @@
 				<button class="btgroup" @click="removeItem(blog.id)">удалить</button>
 			</li>
 		</ul>
-		<BlogsItem :title="title" />
 	</div>
 </template>
 
 <script>
 import { useBlogsFunction } from '../use/blogsFunction'
-import BlogsItem from '@/pages/BlogsItem'
+import { onMounted } from 'vue'
 
 export default {
-	components: {
-		BlogsItem,
-	},
 	setup() {
 		const { blogs, fetchAllBlogs, removeItem } = useBlogsFunction()
+
+		onMounted(fetchAllBlogs)
 
 		return {
 			blogs,
