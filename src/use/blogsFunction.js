@@ -18,7 +18,7 @@ export function useBlogsFunction() {
 	onMounted(fetchAllBlogs)
 	const removeItem = async (id) => {
 		try {
-			await axios.delete(BASE_URL + `${id}`)
+			await axios.delete(BASE_URL + `/${id}`)
 			blogs.value = blogs.value.filter((blog) => blog.id !== id)
 			console.log('remove success')
 		} catch (error) {

@@ -4,24 +4,34 @@
 			<li class="list-item" v-for="blog in blogs" :key="blog.id">
 				<span>{{ blog.id }}. {{ blog.title }} </span>
 				<p>{{ blog.body }}</p>
-				<button class="btgroup">открыть в новом окне</button>
-				<button class="btgroup">редактировать</button>
-				<button class="btgroup">удалить</button>
+				<button class="btgroup" @click="$router.push(`/blogs/${blog.id}`)">
+					открыть в новом окне
+				</button>
+				<button class="btgroup" @click="$router.push(`/blogs/edit/${blog.id}`)">
+					редактировать
+				</button>
+				<button class="btgroup" @click="removeItem(blog.id)">удалить</button>
 			</li>
 		</ul>
+		<BlogsItem :title="title" />
 	</div>
 </template>
 
 <script>
 import { useBlogsFunction } from '../use/blogsFunction'
+import BlogsItem from '@/pages/BlogsItem'
 
 export default {
+	components: {
+		BlogsItem,
+	},
 	setup() {
-		const { blogs, fetchAllBlogs } = useBlogsFunction()
+		const { blogs, fetchAllBlogs, removeItem } = useBlogsFunction()
 
 		return {
 			blogs,
 			fetchAllBlogs,
+			removeItem,
 		}
 	},
 }
