@@ -38,9 +38,10 @@
 
 <script>
 import { useBlogsFunction } from '../use/blogsFunction'
+import { useSearchAndFilters } from '../use/searchAndFilters'
 
 import AddBlog from '@/pages/AddBlog'
-import { onMounted, computed, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 export default {
 	components: {
@@ -57,22 +58,8 @@ export default {
 		}
 		loaded()
 
-		const sortBy = ref('title')
-		const searchQuery = ref('')
-
-		const sorteredItems = computed(() => {
-			return [...blogs.value].sort((post1, post2) =>
-				post1[sortBy.value]?.localeCompare(post2[sortBy.value])
-			)
-		})
-
-		const sortedAndSearchedPosts = computed(() => {
-			return sorteredItems.value.filter((post) =>
-				post.title.toLowerCase().includes(searchQuery.value.toLowerCase())
-			)
-		})
-
-		console.log(sortedAndSearchedPosts)
+		const { sortBy, searchQuery, sorteredItems, sortedAndSearchedPosts } =
+			useSearchAndFilters(blogs)
 
 		return {
 			blogs,
