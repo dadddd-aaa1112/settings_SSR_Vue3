@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory, createMemoryHistory } from 'vue-router'
 import AddBlog from '@/pages/AddBlog'
 import BlogsList from '@/pages/BlogsList'
-import BlogsItem from '@/pages/BlogsItem'
+import BlogInNewWindow from '@/pages/BlogInNewWindow'
 import BlogsEdit from '@/pages/BlogsEdit'
 import { isSSR } from '@/helpers'
 
@@ -16,7 +16,7 @@ const routes = [
 	},
 	{
 		path: '/blogs/:id',
-		component: BlogsItem,
+		component: BlogInNewWindow,
 	},
 	{
 		path: '/blogs/edit/:id',

@@ -6,13 +6,18 @@
 		</select>
 
 		<hr />
-
+		<input v-model="searchQuery" placeholder="Поиск...." />
+		<hr />
 		<AddBlog />
 		<hr />
 		<img class="spiner" v-if="isLoading" :src="require('/src/assets/1.gif')" />
 		<div v-else>
 			<ul class="list">
-				<li class="list-item" v-for="blog in sorteredItems" :key="blog.id">
+				<li
+					class="list-item"
+					v-for="blog in sortedAndSearchedPosts"
+					:key="blog.id"
+				>
 					<span>{{ blog.id }}. {{ blog.title }} </span>
 					<p>{{ blog.body }}</p>
 					<button class="btgroup" @click="$router.push(`/blogs/${blog.id}`)">
@@ -53,6 +58,7 @@ export default {
 		loaded()
 
 		const sortBy = ref('title')
+		const searchQuery = ref('')
 
 		const sorteredItems = computed(() => {
 			return [...blogs.value].sort((post1, post2) =>
@@ -60,7 +66,14 @@ export default {
 			)
 		})
 
-		console.log(sorteredItems)
+		const sortedAndSearchedPosts = computed(() => {
+			return sorteredItems.value.filter((post) =>
+				post.title.toLowerCase().includes(searchQuery.value.toLowerCase())
+			)
+		})
+
+		console.log(sortedAndSearchedPosts)
+
 		return {
 			blogs,
 			fetchAllBlogs,
@@ -69,6 +82,8 @@ export default {
 			loaded,
 			sortBy,
 			sorteredItems,
+			searchQuery,
+			sortedAndSearchedPosts,
 		}
 	},
 }
