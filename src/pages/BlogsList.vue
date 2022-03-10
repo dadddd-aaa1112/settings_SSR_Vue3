@@ -4,6 +4,8 @@
 			<option value="title">Сортировать по заголовкам</option>
 			<option value="body">Сортировать по содержанию</option>
 		</select>
+		<button class="btgroup" @click="trueZtoA">Сортировка A..Z</button>
+		<button class="btgroup" @click="falseZtoA">Сортировка Z..A</button>
 
 		<hr />
 		<input v-model="searchQuery" placeholder="Поиск...." />
@@ -12,10 +14,31 @@
 		<hr />
 		<img class="spiner" v-if="isLoading" :src="require('/src/assets/1.gif')" />
 		<div v-else>
-			<ul class="list">
+			<ul class="list" v-if="ZtoA">
 				<li
 					class="list-item"
 					v-for="blog in sortedAndSearchedPosts"
+					:key="blog.id"
+				>
+					<span>{{ blog.id }}. {{ blog.title }} </span>
+					<p>{{ blog.body }}</p>
+					<button class="btgroup" @click="$router.push(`/blogs/${blog.id}`)">
+						открыть в новом окне
+					</button>
+					<button
+						class="btgroup"
+						@click="$router.push(`/blogs/edit/${blog.id}`)"
+					>
+						редактировать
+					</button>
+					<button class="btgroup" @click="removeItem(blog.id)">удалить</button>
+				</li>
+			</ul>
+
+			<ul class="list" v-else>
+				<li
+					class="list-item"
+					v-for="blog in sortedAndSearchedPostsZtoA"
 					:key="blog.id"
 				>
 					<span>{{ blog.id }}. {{ blog.title }} </span>
@@ -58,8 +81,17 @@ export default {
 		}
 		loaded()
 
-		const { sortBy, searchQuery, sorteredItems, sortedAndSearchedPosts } =
-			useSearchAndFilters(blogs)
+		const {
+			sortBy,
+			searchQuery,
+			sorteredItems,
+			sortedAndSearchedPosts,
+			sorteredItemsZtoA,
+			sortedAndSearchedPostsZtoA,
+			ZtoA,
+			falseZtoA,
+			trueZtoA,
+		} = useSearchAndFilters(blogs)
 
 		return {
 			blogs,
@@ -71,6 +103,11 @@ export default {
 			sorteredItems,
 			searchQuery,
 			sortedAndSearchedPosts,
+			sorteredItemsZtoA,
+			sortedAndSearchedPostsZtoA,
+			ZtoA,
+			falseZtoA,
+			trueZtoA,
 		}
 	},
 }
@@ -83,7 +120,7 @@ export default {
 }
 
 .btgroup {
-	margin-right: 5px;
+	margin: 15px;
 }
 
 .spiner {
