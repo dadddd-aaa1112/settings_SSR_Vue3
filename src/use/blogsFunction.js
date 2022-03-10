@@ -4,7 +4,7 @@ import axios from 'axios'
 const BASE_URL = `https://jsonplaceholder.typicode.com/posts`
 
 const blogs = ref([])
-const idItem = ref([])
+const idItem = ref(null)
 export function useBlogsFunction() {
 	const fetchAllBlogs = async () => {
 		try {
@@ -26,11 +26,16 @@ export function useBlogsFunction() {
 
 	const saveIdBlogs = async (id, item) => {
 		try {
-			const response = await axios.put(BASE_URL + `/${id}`, {
+			await axios.put(BASE_URL + `/${id}`, {
 				item,
 			})
-			blogs.value = response.data
-
+			blogs.value = blogs.value.map((blog) => {
+				if (blog.id === id) {
+					blog.title = item.title
+					blog.body = item.body
+				}
+				return blog
+			})
 			console.log('success update')
 		} catch (error) {
 			console.log(error)

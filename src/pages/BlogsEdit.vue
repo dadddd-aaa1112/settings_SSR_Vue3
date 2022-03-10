@@ -1,60 +1,76 @@
 <template>
 	<div>
-		<h1>EDIT page with id = {{ $route.params.id }}</h1>
-		<input v-model="idItem.title" />
-		<div>
-			<input v-model="idItem.body" />
+		<div v-if="isDelete">
+			<h1>Блог удален</h1>
 		</div>
-		<p>namemee {{ id }} {{ idItem.title }}</p>
-		<p>{{ idItem.body }}</p>
-		<button class="btn" @click="removeItem(id)">Удалить</button>
-		<button class="btn" @click="save" v-if="!isDisabled">Сохранить</button>
 
-		<button v-else @click="$router.push('/')">
-			Вернуться на главную страницу
-		</button>
-		<button class="btn" @click="$router.push('./')">Отмена</button>
+		<div v-else>
+			<div v-if="isSaving">
+				<h1>Изменения сохранены</h1>
+			</div>
+			<h1>EDIT page with id = {{ $route.params.id }}</h1>
+			<input v-model="titleModel" />
+			<div>
+				<input v-model="bodyModel" />
+			</div>
+			<p>namemee {{ id }} {{ titleModel }}</p>
+			<p>{{ bodyModel }}</p>
+			<button class="btn" @click="removeBlog">Удалить</button>
+			<button class="btn" @click="save">Сохранить</button>
+		</div>
+		<button @click="$router.push('/')">Вернуться на главную страницу</button>
 	</div>
 </template>
 
 <script>
 import { useRoute } from 'vue-router'
 import { useBlogsFunction } from '../use/blogsFunction'
-import { onMounted, ref } from 'vue'
-import uniqid from 'uniqid'
+import { ref } from 'vue'
 
 export default {
 	setup() {
-		const { idItem, fetchIdBlogs, removeItem, saveIdBlogs } = useBlogsFunction()
+		const { blogs, idItem, fetchIdBlogs, removeItem, saveIdBlogs } =
+			useBlogsFunction()
 
 		const route = useRoute()
 		const id = route.params.id
-		onMounted(fetchIdBlogs(id))
+		fetchIdBlogs(id)
 
-		const mainPage = ref(false)
-		const isDisabled = ref(false)
+		const titleModel = ref(idItem.value.title)
+		const bodyModel = ref(idItem.value.body)
+		const isDelete = ref(false)
+		const isSaving = ref(false)
 
 		const save = () => {
 			const item = {
-				id: uniqid(),
-				body: idItem.body,
-				title: idItem.title,
+				id: id,
+				body: bodyModel.value,
+				title: titleModel.value,
 			}
+
 			saveIdBlogs(id, item)
-			mainPage.value = true
-			isDisabled.value = true
-			console.log(mainPage.value)
+			console.log('update success, item: ', item)
+			isSaving.value = true
+		}
+
+		const removeBlog = () => {
+			removeItem(id)
+			isDelete.value = true
+			console.log('delete success')
 		}
 
 		return {
 			id,
 			idItem,
 			fetchIdBlogs,
-			removeItem,
+			removeBlog,
 			saveIdBlogs,
 			save,
-			mainPage,
-			isDisabled,
+			bodyModel,
+			titleModel,
+			blogs,
+			isDelete,
+			isSaving,
 		}
 	},
 }

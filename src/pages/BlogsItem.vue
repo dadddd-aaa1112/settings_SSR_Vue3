@@ -12,7 +12,7 @@
 
 <script>
 import { useRoute } from 'vue-router'
-import { onMounted } from 'vue'
+//import { onMounted } from 'vue'
 import { useBlogsFunction } from '@/use/blogsFunction'
 
 export default {
@@ -21,7 +21,7 @@ export default {
 		const route = useRoute()
 		const id = route.params.id
 
-		onMounted(fetchIdBlogs(id))
+		fetchIdBlogs(id)
 		return {
 			id,
 			fetchIdBlogs,

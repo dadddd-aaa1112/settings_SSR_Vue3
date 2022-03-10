@@ -1,35 +1,74 @@
 <template>
 	<div class="card">
-		<ul class="list">
-			<li class="list-item" v-for="blog in blogs" :key="blog.id">
-				<span>{{ blog.id }}. {{ blog.title }} </span>
-				<p>{{ blog.body }}</p>
-				<button class="btgroup" @click="$router.push(`/blogs/${blog.id}`)">
-					открыть в новом окне
-				</button>
-				<button class="btgroup" @click="$router.push(`/blogs/edit/${blog.id}`)">
-					редактировать
-				</button>
-				<button class="btgroup" @click="removeItem(blog.id)">удалить</button>
-			</li>
-		</ul>
+		<select v-model="sortBy">
+			<option value="title">Сортировать по заголовкам</option>
+			<option value="body">Сортировать по содержанию</option>
+		</select>
+
+		<hr />
+
+		<AddBlog />
+		<hr />
+		<img class="spiner" v-if="isLoading" :src="require('/src/assets/1.gif')" />
+		<div v-else>
+			<ul class="list">
+				<li class="list-item" v-for="blog in sorteredItems" :key="blog.id">
+					<span>{{ blog.id }}. {{ blog.title }} </span>
+					<p>{{ blog.body }}</p>
+					<button class="btgroup" @click="$router.push(`/blogs/${blog.id}`)">
+						открыть в новом окне
+					</button>
+					<button
+						class="btgroup"
+						@click="$router.push(`/blogs/edit/${blog.id}`)"
+					>
+						редактировать
+					</button>
+					<button class="btgroup" @click="removeItem(blog.id)">удалить</button>
+				</li>
+			</ul>
+		</div>
 	</div>
 </template>
 
 <script>
 import { useBlogsFunction } from '../use/blogsFunction'
-import { onMounted } from 'vue'
+
+import AddBlog from '@/pages/AddBlog'
+import { onMounted, computed, ref } from 'vue'
 
 export default {
+	components: {
+		AddBlog,
+	},
 	setup() {
 		const { blogs, fetchAllBlogs, removeItem } = useBlogsFunction()
 
-		onMounted(fetchAllBlogs)
+		const isLoading = ref(true)
 
+		const loaded = () => {
+			onMounted(fetchAllBlogs)
+			isLoading.value = false
+		}
+		loaded()
+
+		const sortBy = ref('title')
+
+		const sorteredItems = computed(() => {
+			return [...blogs.value].sort((post1, post2) =>
+				post1[sortBy.value]?.localeCompare(post2[sortBy.value])
+			)
+		})
+
+		console.log(sorteredItems)
 		return {
 			blogs,
 			fetchAllBlogs,
 			removeItem,
+			isLoading,
+			loaded,
+			sortBy,
+			sorteredItems,
 		}
 	},
 }
@@ -43,6 +82,9 @@ export default {
 
 .btgroup {
 	margin-right: 5px;
-	align-self: end;
+}
+
+.spiner {
+	width: 150px;
 }
 </style>

@@ -1,12 +1,12 @@
 <template>
 	<div>
 		<form @submit.prevent="submit">
-			<h4>Create blogs</h4>
-			<input placeholder="Название blogs" v-model="form.title" />
+			<h4>Создать блог</h4>
+			<input placeholder="Название блога" v-model="form.title" />
 
-			<input placeholder="Описание рецепта" v-model="form.body" />
+			<input placeholder="Описание блога" v-model="form.body" />
 			<p>{{ formError }}</p>
-			<button type="submit">create blogs</button>
+			<button type="submit">Создать блог</button>
 		</form>
 	</div>
 </template>
