@@ -1,10 +1,10 @@
 <template>
-	<div class="card">
+	<div class="container mx-auto px-4">
 		<select v-model="sortBy">
 			<option value="title">Сортировать по заголовкам</option>
 			<option value="body">Сортировать по содержанию</option>
 		</select>
-		<button class="btgroup" @click="trueZtoA">Сортировка A..Z</button>
+		<button class="bg-metal rounded" @click="trueZtoA">Сортировка A..Z</button>
 		<button class="btgroup" @click="falseZtoA">Сортировка Z..A</button>
 
 		<hr />

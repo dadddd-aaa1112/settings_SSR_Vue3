@@ -1,5 +1,5 @@
 <template>
-	<div class="app">
+	<div class="container mx-auto px-2">
 		<Navigation />
 
 		<router-view></router-view>
