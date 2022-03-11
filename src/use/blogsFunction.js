@@ -2,7 +2,6 @@ import { ref } from 'vue'
 import axios from 'axios'
 
 const BASE_URL = `https://jsonplaceholder.typicode.com/posts`
-
 const blogs = ref([])
 const idItem = ref(null)
 

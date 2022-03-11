@@ -12,7 +12,6 @@
 
 <script>
 import { useRoute } from 'vue-router'
-//import { onMounted } from 'vue'
 import { useBlogsFunction } from '@/use/blogsFunction'
 
 export default {
