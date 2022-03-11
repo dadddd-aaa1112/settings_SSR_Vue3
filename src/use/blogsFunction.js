@@ -5,16 +5,8 @@ const BASE_URL = `https://jsonplaceholder.typicode.com/posts`
 
 const blogs = ref([])
 const idItem = ref(null)
-export function useBlogsFunction() {
-	const fetchAllBlogs = async () => {
-		try {
-			const response = await axios.get(BASE_URL)
-			blogs.value = response.data
-		} catch (error) {
-			console.log(error)
-		}
-	}
 
+export function useBlogsFunction() {
 	const fetchIdBlogs = async (id) => {
 		try {
 			const response = await axios.get(BASE_URL + `/${id}`)
@@ -68,7 +60,6 @@ export function useBlogsFunction() {
 		blogs,
 		idItem,
 		fetchIdBlogs,
-		fetchAllBlogs,
 		removeItem,
 		addItem,
 		saveIdBlogs,
