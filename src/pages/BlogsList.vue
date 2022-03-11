@@ -1,29 +1,50 @@
 <template>
-	<div class="container mx-auto px-4">
-		<select v-model="sortBy">
-			<option value="title">Сортировать по заголовкам</option>
-			<option value="body">Сортировать по содержанию</option>
-		</select>
-		<button class="bg-metal rounded" @click="trueZtoA">Сортировка A..Z</button>
-		<button class="btgroup" @click="falseZtoA">Сортировка Z..A</button>
+	<div class="container mx-auto">
+		<div class="flex">
+			<AddBlog />
+			<div class="w-2/5 my-4 py-2">
+				<select class="text-base font-serif" v-model="sortBy">
+					<option class="text-base font-serif" value="title">
+						Сортировать по заголовкам
+					</option>
+					<option class="text-base font-serif" value="body">
+						Сортировать по содержанию
+					</option>
+				</select>
+				<div class="py-2">
+					<button
+						class="bg-dark_green hover:bg-dark_grey text-white font-bold py-2 px-4 my-2 mx-2 rounded text-base"
+						@click="trueZtoA"
+					>
+						Сортировка А..Я
+					</button>
+					<button
+						class="bg-dark_green hover:bg-dark_grey text-white font-bold py-2 px-4 my-2 mx-2 rounded text-base"
+						@click="falseZtoA"
+					>
+						Сортировка Я..А
+					</button>
+				</div>
 
-		<hr />
-		<input v-model="searchQuery" placeholder="Поиск...." />
-		<hr />
-		<AddBlog />
-		<hr />
+				<input v-model="searchQuery" placeholder="Поиск...." />
+			</div>
+		</div>
 		<img class="spiner" v-if="isLoading" :src="require('/src/assets/1.gif')" />
 		<div v-else>
-			<ul class="list">
+			<ul>
 				<li
-					class="list-item"
+					class="border-y-2 border-black my-4 bg-light"
 					v-for="blog in ZtoA
 						? sortedAndSearchedPosts
 						: sortedAndSearchedPostsZtoA"
 					:key="blog.id"
 				>
-					<span>{{ blog.id }}. {{ blog.title }} </span>
-					<p>{{ blog.body }}</p>
+					<div
+						class="transition duration-500 ease-in-out bg-light hover:bg-vanil rounded-md p-8"
+					>
+						<h3>{{ blog.title }}</h3>
+						<p>{{ blog.body }}</p>
+					</div>
 					<button class="btgroup" @click="$router.push(`/blogs/${blog.id}`)">
 						открыть в новом окне
 					</button>
@@ -39,15 +60,27 @@
 
 			<span
 				:class="{ 'current-page': page === pageNumber }"
-				class="btgroup"
+				class="my-2 mx-2 text-base font-serif"
 				v-for="pageNumber in countPage"
 				:key="pageNumber"
 				@click="changePage(pageNumber)"
 			>
 				{{ pageNumber }}
 			</span>
-			<button class="btgroup" @click="prevPage">Prev page</button>
-			<button class="btgroup" @click="nextPage">Next page</button>
+			<div class="flex">
+				<button
+					class="bg-dark_green hover:bg-dark_grey text-white font-bold py-2 px-4 my-2 mx-2 rounded text-base"
+					@click="prevPage"
+				>
+					Предыдущая страница
+				</button>
+				<button
+					class="bg-dark_green hover:bg-dark_grey text-white font-bold py-2 px-4 my-2 mx-2 rounded text-base"
+					@click="nextPage"
+				>
+					Следующая страница
+				</button>
+			</div>
 		</div>
 	</div>
 </template>
@@ -123,24 +156,11 @@ export default {
 </script>
 
 <style>
-.list-item {
-	border: 1px solid grey;
-	margin-bottom: 5px;
-}
-
-.btgroup {
-	margin: 15px;
-}
-
 .spiner {
 	width: 150px;
 }
 
-.pages {
-	margin: 2px 5px;
-}
-
 .current-page {
-	border: 1px solid purple;
+	border: 2px solid black;
 }
 </style>

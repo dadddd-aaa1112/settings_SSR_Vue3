@@ -6,9 +6,11 @@ module.exports = {
 		extend: {
 			colors: {
 				dark_grey: '#04202C',
-				dark_green: '#3040404',
+				dark_green: '#384737',
 				light_green: '#5B7065',
 				light: '#C9D1C8',
+				vanil: '#ece1b2',
+				dark_vanil: '#dcc770',
 			},
 		},
 	},

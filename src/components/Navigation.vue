@@ -1,7 +1,11 @@
 <template>
-	<div>
-		<button class="btns" @click="$router.push('/')">Blogs</button>
-		<button class="btns" @click="$router.push('/add')">Add blogs</button>
+	<div class="bg-dark_vanil my-4">
+		<button class="bg-vanil text-dark_grey" @click="$router.push('/')">
+			Блоги
+		</button>
+		<button class="bg-vanil text-dark_grey" @click="$router.push('/add')">
+			Создать блог
+		</button>
 	</div>
 </template>
 
@@ -9,8 +13,4 @@
 export default {}
 </script>
 
-<style>
-.btns {
-	margin-right: 10px;
-}
-</style>
+<style></style>

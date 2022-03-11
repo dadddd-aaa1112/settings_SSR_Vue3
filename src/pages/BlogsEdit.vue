@@ -1,19 +1,19 @@
 <template>
 	<div>
 		<div v-if="isDelete">
-			<h1>Блог удален</h1>
+			<h2>Блог удален</h2>
 		</div>
 
 		<div v-else>
 			<div v-if="isSaving">
-				<h1>Изменения сохранены</h1>
+				<h2>Изменения сохранены</h2>
 			</div>
-			<h1>EDIT page with id = {{ $route.params.id }}</h1>
+			<h1>Редактирование страницы</h1>
 			<input v-model="titleModel" />
 			<div>
 				<input v-model="bodyModel" />
 			</div>
-			<p>namemee {{ id }} {{ titleModel }}</p>
+			<h3>{{ titleModel }}</h3>
 			<p>{{ bodyModel }}</p>
 			<button class="btn" @click="removeBlog">Удалить</button>
 			<button class="btn" @click="save">Сохранить</button>
@@ -76,12 +76,4 @@ export default {
 }
 </script>
 
-<style>
-.btn {
-	margin-right: 5px;
-}
-
-.hide {
-	display: none;
-}
-</style>
+<style></style>

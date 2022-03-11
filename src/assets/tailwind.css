@@ -4,6 +4,25 @@
 
 @layer base {
 	button {
-		@apply bg-green-300 rounded;
+		@apply bg-light_green hover:bg-dark_green text-white font-bold py-2 px-4 border-b-4 border-light_green hover:border-dark_green rounded font-serif text-base my-2 mx-2;
+	}
+	h1 {
+		@apply text-3xl font-serif py-2;
+	}
+
+	h2 {
+		@apply text-3xl font-serif py-2 text-light_green;
+	}
+
+	p {
+		@apply text-base font-serif;
+	}
+
+	h3 {
+		@apply text-2xl  font-serif;
+	}
+
+	input {
+		@apply shadow appearance-none border border-dark_grey rounded py-2 px-3  mb-3 leading-tight focus:outline-none;
 	}
 }

@@ -3,6 +3,7 @@ import AddBlog from '@/pages/AddBlog'
 import BlogsList from '@/pages/BlogsList'
 import BlogInNewWindow from '@/pages/BlogInNewWindow'
 import BlogsEdit from '@/pages/BlogsEdit'
+import NotFound from '@/pages/NotFound'
 import { isSSR } from '@/helpers'
 
 const routes = [
@@ -21,6 +22,10 @@ const routes = [
 	{
 		path: '/blogs/edit/:id',
 		component: BlogsEdit,
+	},
+	{
+		path: '/:pathMatch(.*)*',
+		component: NotFound,
 	},
 ]
 

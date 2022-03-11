@@ -1,10 +1,7 @@
 <template>
 	<div>
-		<h1>page with id = {{ $route.params.id }}</h1>
-
-		<p>name {{ id }}</p>
-		<p>name {{ idItem.title }}</p>
-		<p>name {{ idItem.body }}</p>
+		<h3>{{ idItem.title }}</h3>
+		<p>{{ idItem.body }}</p>
 
 		<button @click="$router.push('/')">Вернуться на главную страницу</button>
 	</div>
